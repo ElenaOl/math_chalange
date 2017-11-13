@@ -1,0 +1,9 @@
+<% form_for :games do |f| %>
+    <%= f.radio_button :level, 'level 1', :checked => true %> 
+    <%= label :level_1, 'Level 1' %>
+    <%= f.radio_button :level, 'level 2' %>
+    <%= label :level_2, 'Level 2' %>
+    <%= f.radio_button :level, 'level 3' %>
+    <%= label :level_3, 'Level 3' %>
+  <% end %>
+  

@@ -1,0 +1,9 @@
+<h1>Add child</h1>
+
+<%= form_for :child do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+    <%= f.hidden_field :user_id, :value => @current_user.id %>
+    <br><br>
+    <%= form.submit "Submit"%>
+<%end%>

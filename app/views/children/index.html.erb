@@ -1,0 +1,12 @@
+<%= link_to "add new child", 'children/new', method: :get %>
+
+<h1> Children </h1>
+
+
+<br/>
+
+<% @children.each do |child| %>
+	<a href="<%= child_path(child)%>"><h3><%= child.name %></h3></a>
+<% end %>
+
+<%= button_to 'logout', logout_path, :method => :delete %>
