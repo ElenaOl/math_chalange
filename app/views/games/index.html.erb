@@ -1,9 +1,30 @@
-<% form_for :games do |f| %>
-    <%= f.radio_button :level, 'level 1', :checked => true %> 
-    <%= label :level_1, 'Level 1' %>
-    <%= f.radio_button :level, 'level 2' %>
-    <%= label :level_2, 'Level 2' %>
-    <%= f.radio_button :level, 'level 3' %>
-    <%= label :level_3, 'Level 3' %>
-  <% end %>
-  
+<h1> choose your level and type of math chalange </h1>
+
+<%= radio_button_tag(:level, "level 1") %>
+<%= label_tag(:level, "Level 1") %>
+<%= radio_button_tag(:level, "level 2") %>
+<%= label_tag(:level, "Level 2") %>
+<%= radio_button_tag(:level, "level 3") %>
+<%= label_tag(:level, "Level 3") %>
+
+<br><br>
+
+<%= radio_button_tag(:operation, "+") %>
+<%= label_tag(:operation, "+") %>
+<%= radio_button_tag(:operation, "-") %>
+<%= label_tag(:operation, "-") %>
+
+<br><br>
+
+
+<%= form_for :game do |form| %>
+    <%= form.radio_button(:level, "level 1") %>
+    <%= form.label(:level, "Level 1") %>
+    <%= form.radio_button(:level, "level 2") %>
+    <%= form.label(:level, "Level 2") %>
+    <%= form.radio_button(:level, "level 3") %>
+    <%= form.label(:level, "Level 3") %>
+<%end%>
+
+   
+

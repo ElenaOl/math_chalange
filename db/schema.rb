@@ -24,14 +24,16 @@ ActiveRecord::Schema.define(version: 20171113021543) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.string "level"
+    t.integer "level"
     t.string "operation"
     t.string "time"
-    t.string "correct_answer"
+    t.integer "correct_answer"
     t.bigint "child_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["child_id"], name: "index_games_on_child_id"
+    t.index ["user_id"], name: "index_games_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,4 +45,5 @@ ActiveRecord::Schema.define(version: 20171113021543) do
 
   add_foreign_key "children", "users"
   add_foreign_key "games", "children"
+  add_foreign_key "games", "users"
 end

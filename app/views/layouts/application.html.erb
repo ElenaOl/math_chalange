@@ -14,18 +14,11 @@
     <div class="container">
       <div class="my-nav">
         <strong>Math Chalange</strong>
-        <a href="#">new</a> |
-        <a href="#">comments</a> |
-        <a href="/">show</a> |
-        <a href="#">ask</a> |
-        <a href="#">jobs</a>
         <% if not @current_user %>
           <a class="login" href="/login">login</a>
-          <a class="login" href="/signup">signup</a>
+          <a class="login" href="/user">signup</a>
         <% else %>
-          | <a href="/posts/new">submit</a>
           <%= link_to "logout", "/logout", method: :delete, class: "login" %>
-          <a class="login" href="/profile">profile</a>
         <% end%>
      </div>
      <%= yield %>

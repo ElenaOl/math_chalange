@@ -1,27 +1,32 @@
 class GamesController < ApplicationController
   
     def index
-        @child = Child.find(params[:child_id])
-        @games = Game.all
-        @games = Game.where(:child_id => @child.id)
-        @games = Game.new
+        # @child = Child.find(params[:child_id])
+        @games = Game.where(:child_id => :child_id)
+        flash[:warning] = @current_user.id
+        # @games = Game.where(:child_id => @child.id)
+        # @games = Game.new
     end
         
     def create
         if @current_user
-            @c = Comment.new(comment_params)
+            @c = Game.new(game_params)
             @c.save!
-            redirect_to "/comments/" + comment_params[:post_id]
+            redirect_to "/games/" + game_params[:child_id]
         else
-            flash[:warning] = "You need to log in to post a comment"
+            flash[:warning] = "You need to log in"
             redirect_to login_path
         end
     end
+
+
     
     private
     
-    def comment_params
-        params.require(:comment).permit(:level, :operation, :user_id, :child_id)
+    def game_params
+        defaults = { child_id: current_child.id }
+        params.require(:game).permit(:level, :operation, :user_id, :child_id).reverse_merge(defaults)
+        # params.require(:game).permit(:level, :operation, :user_id, :child_id => @child.id)
     end
     
 end

@@ -1,7 +1,7 @@
 class UserController < ApplicationController
-    def index
-        @users = User.all
-      end
+    # def index
+    #     @users = User.all
+    #   end
     
       def create
         user = User.create(user_params)
@@ -9,11 +9,17 @@ class UserController < ApplicationController
         puts '#############user.create'
         puts user
         # redirect_to :controller=>'sessions', :action=>'create', :user=>user
-        redirect_to root_path
+        redirect_to login_path
       end
     
       def edit
-        @user = User.find(params[:id])
+        @user = @current_user
+      end
+
+      def update
+        u = User.find(@current_user.id)
+        u.update(user_params)
+        redirect_to "/users/show"
       end
     
       def update
@@ -35,10 +41,15 @@ class UserController < ApplicationController
     
       def show
         puts "user_controller pointing to SHOW ROUTE"
-        @user = User.find(params[:id])
+        # @user = User.find(params[:id])
+        @user = @current_user
+        @children = Child.where(:user_id => @current_user.id)
       end
     
-      def user_params
-       params.require(:user).permit( :email, :password)
-      end
+
+      private
+      
+        def user_params
+          params.require(:user).permit(:email, :password)
+        end
 end
