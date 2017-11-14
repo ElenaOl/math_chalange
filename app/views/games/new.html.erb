@@ -4,8 +4,10 @@
 
 <p> <%= params[:problem] %> </p>
 <%= form_for :game do |form| %>
-
+<%= form.label :result %>
+<%= form.text_field :result, :value => "" %>
 <%= form.hidden_field :game_id, :value => params[:game_id] %>
+<%= form.submit "Submit"%>
 <% end %>
 
 

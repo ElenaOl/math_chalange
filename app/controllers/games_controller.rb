@@ -40,7 +40,10 @@ class GamesController < ApplicationController
     end
 
     def update
-
+        # read user result
+        #read gameid and get from db
+        # check result
+        # show next problem (redirect to create with params and option useSame)
     end
     
         
@@ -100,15 +103,7 @@ end
     
 
     
-#     def new
-#         @game = Game.new
-#         # puts "new route #{child_params}" 
-#     end
-    
-#     def index
-#         @games = Game.all
-#     end
-    
+
 #     def create
 #         Game.create(child_params)
 #         redirect_to games_path
