@@ -1,0 +1,17 @@
+
+<p> <%=@level%> </p>
+<p> <%=@operation%> </p>
+<p> <%=@child_id%> </p>
+<p> <%=@num1%> </p>
+<p> <%=@num2%> </p>
+
+<p> Hello!!! Solve This!</p>
+
+
+<p> <%= @num1 %> <%= @operation %> <%= @num2 %> = </p>
+<%= form_for :game do |form| %>
+    
+<%= form.hidden_field :child_id, :value => @child.id %>
+
+
+

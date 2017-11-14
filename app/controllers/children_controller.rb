@@ -3,9 +3,14 @@ class ChildrenController < ApplicationController
     puts(:current_user)
     
     def show
+        puts "ccccc"
+        puts params[:id]
+        
        @child = Child.find(params[:id])
+
+       puts @child
     #    @games = Game.where(:child_id => @current_child.id)
-       redirect_to games_path
+       redirect_to games_path(:child_id => params[:id])
     end
     
     def new
@@ -46,8 +51,7 @@ class ChildrenController < ApplicationController
     # end
     private
     def child_params
-        # defaults = { user_id: current_user.id }
-        # params.require(:child).permit(:name, :user_id => @current_user.id)
+        
         defaults = { user_id: current_user.id }
         params.require(:child).permit(:user_id, :name).reverse_merge(defaults)
     end
