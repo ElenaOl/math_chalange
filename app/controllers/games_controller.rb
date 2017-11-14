@@ -57,18 +57,16 @@ class GamesController < ApplicationController
             @num1 = rand(0..10) 
             @num2 = rand(0..10) 
         elsif(@level == 2)
-            num1 = rand(10..20)
+            @num1 = rand(10..20)
             @num2 = rand(10..20) 
         else(@level == 3)
-            num1 = rand(20..100)
+            @num1 = rand(20..100)
             @num2 = rand(20..100)     
         end
 
-        puts "numnumnunmnunmnunm"
-        puts @num1 
-        # puts num2
+        problem = "#{@num1} #{@operation} #{@num2} = "
         #Game.create(:game)
-        redirect_to controller: 'games', action: 'new', level: @level, operation: @operation, child_id: @child_id, num1: @num1, num2: @num2
+        redirect_to controller: 'games', action: 'new', problem: problem, game_id: 1234
         
         # '/games/new'(:game => ":game")
         # if @current_user
