@@ -40,6 +40,7 @@ class GamesController < ApplicationController
     end
 
     def update
+
         # read user result
         #read gameid and get from db
         # check result
@@ -67,7 +68,11 @@ class GamesController < ApplicationController
             @num2 = rand(20..100)     
         end
 
-        problem = "#{@num1} #{@operation} #{@num2} = "
+        if(@num1 >= @num2)
+            problem = "#{@num1} #{@operation} #{@num2} = "
+        else
+            problem = "#{@num2} #{@operation} #{@num1} = " 
+        end       
         #Game.create(:game)
         redirect_to controller: 'games', action: 'new', problem: problem, game_id: 1234
         
@@ -101,7 +106,8 @@ end
            
        
     
-
+# defaults = { user_id: current_user.id }
+#         params.require(:child).permit(:user_id, :name).reverse_merge(defaults)
     
 
 #     def create
