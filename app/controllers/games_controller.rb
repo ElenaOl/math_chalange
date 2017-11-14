@@ -73,7 +73,7 @@ class GamesController < ApplicationController
         else
             problem = "#{@num2} #{@operation} #{@num1} = " 
         end       
-        #Game.create(:game)
+        Game.create(game_params)
         redirect_to controller: 'games', action: 'new', problem: problem, game_id: 1234
         
         # '/games/new'(:game => ":game")
@@ -96,14 +96,18 @@ class GamesController < ApplicationController
     
     def game_params
         #puts :game
-        #defaults = { child_id: child_id }
-        #params.require(:child_id)
-        # params.require(:game).permit(:level, :operation, :user_id, :child_id).reverse_merge(defaults)
-        # params.require(:game).permit(:level, :operation, :user_id, :child_id => @child.id)
+        defaults = { child_id: child_id }
+        params.require(:game).permit(:level, :operation, :problem, :expected_answer, :correct_answer, :right_count, :tries_count, :total_count, :start_time, :end_time, :user_id, :child_id).reverse_merge(defaults)
     end
     
 end
-           
+      
+
+
+
+
+
+
        
     
 # defaults = { user_id: current_user.id }
@@ -126,8 +130,5 @@ end
 #     # def destroy
 #     # end
     
-#     def child_params
-#         defaults = { child_id: current_child.id }
-#         params.require(:child).permit(:child_id, :level, :operation).reverse_merge(defaults)
-#     end
+#     
 # end
