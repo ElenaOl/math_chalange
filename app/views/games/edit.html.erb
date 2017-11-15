@@ -1,0 +1,9 @@
+<p> Hello!!! Solve This!</p>
+
+<p> <%= params[:problem] %> </p>
+<%= form_for :game @update |form| %>
+<%= form.label :result %>
+<%= form.text_field :result, :value => params[:result] %>
+<%= form.hidden_field :game_id, :value => params[:game_id] %>
+<%= form.submit "Submit"%>
+<% end %>

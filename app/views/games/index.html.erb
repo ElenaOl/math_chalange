@@ -1,11 +1,11 @@
 <h1> choose your level and type of math chalange </h1>
 
 <%= form_for :game do |form| %>
-    <%= form.radio_button(:level, 1) %>
+    <%= form.radio_button(:level, "1") %>
     <%= form.label(:level, "Level 1") %>
-    <%= form.radio_button(:level, 2) %>
+    <%= form.radio_button(:level, "2") %>
     <%= form.label(:level, "Level 2") %>
-    <%= form.radio_button(:level, 3) %>
+    <%= form.radio_button(:level, "3") %>
     <%= form.label(:level, "Level 3") %>
     <br><br>
     <%= form.radio_button(:operation, "+") %>
@@ -14,6 +14,7 @@
     <%= form.label(:operation, "-") %>
     <br><br>
     <%= form.hidden_field :child_id, :value => @child.id %>
+    <%= form.hidden_field :result, :value => nil %>
     <%= form.submit "Start Game"%>
 <%end%>
 

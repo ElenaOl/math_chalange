@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     post 'login' => 'sessions#create'
 
     post 'children/new'=>'children#create'
-  
+    post 'games/update' =>'games#update'
     delete 'logout' => 'sessions#destroy'
     
     get "signup" => 'users#new'

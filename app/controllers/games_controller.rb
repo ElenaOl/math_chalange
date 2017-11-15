@@ -15,8 +15,7 @@ class GamesController < ApplicationController
 
         @games = Game.where(:child_id => :child_id)
         flash[:warning] = @current_user.id
-        # @games = Game.where(:child_id => @child.id)
-        # @games = Game.new
+
     end
 
     # def show
@@ -40,42 +39,83 @@ class GamesController < ApplicationController
     end
 
     def update
-
+        puts "updateupdateupdateupdateupdateupdateupdatevvvvvvvvvvvvvvvv"
+        puts @game_id = params[:game_id]
+        @num1 = params[:num1].to_i
+        @num2 = params[:num2].to_i
+        @operation = params[:operation]
+        puts "@num1@num1v@num1v@num1@num1v"
+        # puts @num1.class
+        puts @num1
+        puts @num2
+        puts @operation.class
         # read user result
+        @result = params[:result]
+        puts "resultresultvvresultresultresultresult"
+        puts @result
+        if(@operation == "-")
+            @expected_answer = @num1 - @num2
+        else
+            @expected_answer = @num1 + @num2  
+        end      
+        puts "expected answer"
+        puts @expected_answer 
+
+        if(@result == @expected_answer)
+            @correct_answer 
+        end    
+        # if(@result)
+        
         #read gameid and get from db
         # check result
         # show next problem (redirect to create with params and option useSame)
+        # redirect_to controller: 'games', action: 'update', result: result, 
     end
     
         
     def create
         puts "aaaaaaaaa"
         puts params[:game]
+        puts "game_params"
+        puts game_params()
+
+
 
         @game = params[:game]
         @level = @game[:level]
         @operation = @game[:operation]
         @child_id = @game[:child_id]
+        @result = @game[:result]
 
-        if(@level == 1) 
+        if(@level == "1") 
             @num1 = rand(0..10) 
             @num2 = rand(0..10) 
-        elsif(@level == 2)
+        elsif(@level == "2")
             @num1 = rand(10..20)
             @num2 = rand(10..20) 
-        else(@level == 3)
+        else(@level == "3")
             @num1 = rand(20..100)
             @num2 = rand(20..100)     
         end
 
-        if(@num1 >= @num2)
-            problem = "#{@num1} #{@operation} #{@num2} = "
-        else
-            problem = "#{@num2} #{@operation} #{@num1} = " 
-        end       
-        Game.create(game_params)
-        redirect_to controller: 'games', action: 'new', problem: problem, game_id: 1234
-        
+        if(@num1 < @num2)
+            temp = @num1;
+            @num1 = @num2;
+            @num2 = temp;
+        end   
+
+        problem = "#{@num1} #{@operation} #{@num2} = "
+        num1 = @num1
+        num2 = @num2
+        operation = @operation
+
+        # if(@result == "")
+            Game.create(game_params)
+            redirect_to controller: 'games', action: 'new', problem: problem, num1: num1, num2: num2, operation: operation
+        # else
+        #     Game.create(game_params)
+        #     redirect_to controller: 'games', action: 'update', result: result
+        # end
         # '/games/new'(:game => ":game")
         # if @current_user
         #     @c = Game.new(game_params)
@@ -95,8 +135,9 @@ class GamesController < ApplicationController
     private
     
     def game_params
-        #puts :game
-        defaults = { child_id: child_id }
+        puts "params[:child_id]vvparams[:child_id]params[:child_id]params[:child_id]"
+        puts @child_id
+        defaults = { child_id: @child_id }
         params.require(:game).permit(:level, :operation, :problem, :expected_answer, :correct_answer, :right_count, :tries_count, :total_count, :start_time, :end_time, :user_id, :child_id).reverse_merge(defaults)
     end
     
@@ -110,14 +151,9 @@ end
 
        
     
-# defaults = { user_id: current_user.id }
-#         params.require(:child).permit(:user_id, :name).reverse_merge(defaults)
-    
 
-#     def create
-#         Game.create(child_params)
-#         redirect_to games_path
-#     end
+
+#    
     
 #     # def edit
 #     # end

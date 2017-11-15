@@ -3,12 +3,22 @@
 <p> Hello!!! Solve This!</p>
 
 <p> <%= params[:problem] %> </p>
-<%= form_for :game do |form| %>
-<%= form.label :result %>
-<%= form.text_field :result, :value => "" %>
-<%= form.hidden_field :game_id, :value => params[:game_id] %>
-<%= form.submit "Submit"%>
+<p><%= num1 = params[:num1] %></p>
+<p><%= num2 = params[:num2] %></p>
+<p><%= operation = params[:operation] %></p>
+
+
+<%= form_tag("/games/update", method: "post") do %>
+    <%= label_tag(:result, "Result:") %>
+    <%= text_field_tag(:result) %>
+    <%= hidden_field_tag(:num1, params[:num1]) %>
+    <%= hidden_field_tag(:num2, params[:num2]) %>
+    <%= hidden_field_tag(:operation, params[:operation]) %>
+    <%= submit_tag("Submit") %>
 <% end %>
+
+
+
 
 
 
