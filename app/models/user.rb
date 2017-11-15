@@ -1,6 +1,5 @@
 class User < ApplicationRecord
     has_many :children
-    has_many :games
 
     validates :email,
     presence: true,

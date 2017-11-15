@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   
     #posting to db
     post 'login' => 'sessions#create'
-
+    get 'games' => 'games#new'
+    
     post 'children/new'=>'children#create'
     post 'games/update' =>'games#update'
     delete 'logout' => 'sessions#destroy'

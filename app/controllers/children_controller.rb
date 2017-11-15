@@ -51,7 +51,6 @@ class ChildrenController < ApplicationController
     # end
     private
     def child_params
-        
         defaults = { user_id: current_user.id }
         params.require(:child).permit(:user_id, :name).reverse_merge(defaults)
     end

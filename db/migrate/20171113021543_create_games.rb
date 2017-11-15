@@ -13,7 +13,6 @@ class CreateGames < ActiveRecord::Migration[5.1]
       t.string :end_time
       
       t.references :child, foreign_key: true
-      t.references :user, foreign_key: true
 
       t.timestamps
     end
