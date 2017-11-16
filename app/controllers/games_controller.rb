@@ -14,6 +14,8 @@ class GamesController < ApplicationController
         puts "!!!!!!!!!!!!MAKEPROBLEM"
 
         level = @game[:level]
+        puts "!!!!!!!!!!!!!!!!!!!level"
+        puts level
         operation = @game[:operation]
 
         if(level == 1) 
@@ -55,13 +57,15 @@ class GamesController < ApplicationController
 
 
         @game = params[:game]
+        puts "params[:game]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" 
+        puts @game
         level = @game[:level]
         operation = @game[:operation]
         child_id = @game[:child_id]
 
         puts "!!!!!!!!CREATINGGAME"
         @game = Game.create(game_params)
-        @game[:start_time] = 
+        # @game[:start_time] = 
 
         make_problem
         redirect_to controller: 'games', action: 'show', id:@game[:id]

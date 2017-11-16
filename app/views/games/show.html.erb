@@ -2,7 +2,7 @@
 
 <p> Hello!!! Solve This!</p>
 
-<% if(@game[:total_count] <5) %>
+<% if(@game[:total_count] <20) %>
     <p> <%= @game[:problem] %> </p>
 
     <% url = "/games/#{@game[:id]}" %>
