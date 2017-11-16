@@ -1,7 +1,7 @@
 <div class="container">
     <h3> choose your level and type of math chalange </h3>
 <div class="row">
-    <%= form_for :game do |f|%>  
+    <%= simple_form_for :game do |f|%>  
     <div class="col s12">    
         <%= f.radio_button(:level, "1") %>
         <%= f.label(:level_1, "Level 1") %>
