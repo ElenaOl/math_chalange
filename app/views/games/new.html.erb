@@ -1,20 +1,26 @@
-<h1> choose your level and type of math chalange </h1>
-
-<%= form_for :game do |f|%>  
-    <%= f.radio_button(:level, "1") %>
-    <%= f.label(:level_1, "Level 1") %>
-    <%= f.radio_button(:level, "2") %>
-    <%= f.label(:level_2, "Level 2") %>
-    <%= f.radio_button(:level, "3") %>
-    <%= f.label(:level_3, "Level 3") %>
-    <br></br>
-    <%= f.radio_button(:operation, "+") %>
-    <%= f.label(:op_1, "+") %>
-    <%= f.radio_button(:operation, "-") %>
-    <%= f.label(:level_4, "-") %>
-    <br><br>
-    <%= f.hidden_field :child_id, :value => @child.id %>
-    <%= f.hidden_field :operation, :value => "+" %>
-    <%= f.submit("Start Game") %>
-    <br><br>
-<% end %>
+<div class="container">
+    <h3> choose your level and type of math chalange </h3>
+<div class="row">
+    <%= form_for :game do |f|%>  
+    <div class="col s12">    
+        <%= f.radio_button(:level, "1") %>
+        <%= f.label(:level_1, "Level 1") %>
+        <%= f.radio_button(:level, "2") %>
+        <%= f.label(:level_2, "Level 2") %>
+        <%= f.radio_button(:level, "3") %>
+        <%= f.label(:level_3, "Level 3") %>  
+    </div>
+    <div class="col s12">
+        <%= f.radio_button(:operation, "+") %>
+        <%= f.label(:operation, "+") %>
+        <%= f.radio_button(:operation, "-") %>
+        <%= f.label(:operatio, "-") %>
+    </div>
+    <div class="col s12">
+        <%= f.hidden_field :child_id, :value => @child.id %>
+        <%= f.hidden_field :operation, :value => "+" %>
+        <%= f.submit("Start Game") %>
+    </div>
+    <% end %>
+</div>    
+</div>

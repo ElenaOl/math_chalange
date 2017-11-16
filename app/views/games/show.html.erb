@@ -1,24 +1,35 @@
 
 
-<p> Hello!!! Solve This!</p>
+<div class="container">
 
-<% if(@game[:total_count] <20) %>
-    <p> <%= @game[:problem] %> </p>
+    <div class="row">
+        <div class="col s12">    
+            <h3> Hello!!! Solve This!</h3>
+        </div>
+        <div class="col s12">    
+            <% if(@game[:total_count] <20) %>
+                <h4> <%= @game[:problem] %> </h4>
+            
+                <% url = "/games/#{@game[:id]}" %>
 
-    <% url = "/games/#{@game[:id]}" %>
-
-    <%= form_tag(url, method: "put") do %>
-        <%= label_tag(:result, "Result:") %>
-        <%= text_field_tag(:result) %>
-        <%= submit_tag("Submit") %>
-    <% end %>
-<% else %>
-    <%= link_to "Start over", games_path(:child_id => @game[:child_id]) %>  
-<% end %>
-
-<h1><%=@game[:right_count]%>/<%=@game[:total_count]%></h1>
-
-
+                <%= form_tag(url, method: "put") do %>      
+                <%= label_tag(:result, "Result:") %>  
+                <%= text_field_tag(:result) %>     
+                <%= submit_tag("Submit") %>
+                <% end %>
+            <% else %>
+                  
+                <a class="waves-effect waves-light btn-large"<%= link_to "Start over", games_path(:child_id => @game[:child_id]) %></a>      
+            <% end %>
+        </div>
+        <div class="col s12">       
+            <h4>Your score is:</h4> 
+        </div>
+        <div class="col s12">              
+            <h4><%=@game[:right_count]%>/<%=@game[:total_count]%></h4>
+        </div>   
+    </div>  
+</div>
 
 
 

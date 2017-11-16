@@ -15,3 +15,26 @@
  */
  
  @import "materialize"; 
+
+ $font-stack:    Helvetica, sans-serif;
+ $primary-color: #333;
+ 
+ body {
+   font: 100% $font-stack;
+   color: $primary-color;
+ }
+
+ body {
+     background-color: lightgrey;
+ }
+ 
+form {
+    font-size:  20px;
+}
+h1, h2, h3, h4, h5 {
+    color: orange;
+}
+
+.label {
+    font-size: 30px;
+  }

@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'materialize-sass', '~>0.100.2'
-gem 'simple_form'
+gem 'materialize-form'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
