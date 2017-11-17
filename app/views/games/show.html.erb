@@ -15,7 +15,7 @@
                     
                 <%= form_tag(url, method: "put", class: "game_form") do %>      
                     <h4>Your Result: </h4>
-                    <%= text_field_tag(:result) %>    
+                    <%= text_field_tag :result, '', :autofocus => true %>    
                     <%= submit_tag("Submit")  %>
                     <% end %>     
             <% else %>
