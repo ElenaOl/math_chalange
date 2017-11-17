@@ -22,19 +22,40 @@
  body {
    font: 100% $font-stack;
    color: $primary-color;
+   margin: 20px;
+   text-align: center;
+   background-color: lightgrey;
  }
-
- body {
-     background-color: lightgrey;
- }
+nav {
+    text-align: left;
+}
  
 form {
     font-size:  20px;
 }
-h1, h2, h3, h4, h5 {
-    color: orange;
+h1, h3, h4, h5 {
+    color: teal;
+    text-align: center;
 }
-
-.label {
+h2{
+    color: purple;
+}
+a {
+    text-align: center;
+}
+.game_form {
     font-size: 30px;
+    color: teal;
   }
+
+  .image {
+      width: 100%;
+      text-align: center;
+  }  
+.form {
+    text-align: center;
+}  
+
+.one {
+    margin-top: 30px;
+}

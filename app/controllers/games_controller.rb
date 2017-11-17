@@ -17,6 +17,8 @@ class GamesController < ApplicationController
         puts "!!!!!!!!!!!!!!!!!!!level"
         puts level
         operation = @game[:operation]
+        puts "!!!!!!!!!!!!!!!!!!!operation"
+        puts operation
 
         if(level == 1) 
             num1 = rand(0..10) 

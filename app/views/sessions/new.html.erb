@@ -1,7 +1,10 @@
 <h1>Login</h1>
-
-<%= form_for :user do |f| %>
-  <%= f.email_field :email, placeholder: "Enter your email" %>
-  <%= f.password_field :password, placeholder: "Enter your password" %>
-  <%= f.submit "Login" %>
-<% end %>
+<div class="container">
+  <%= simple_form_for :user do |f| %>
+    <%= f.label :email, class: '', for: 'email' %>
+    <%= f.email_field :email, placeholder: "Enter your email" %>
+    <%= f.label :password, class: '', for: 'password' %>
+    <%= f.password_field :password, :placeholder => "Enter your password" %>
+    <%= f.button :submit, "Login"%> 
+  <% end %>
+</div>  
