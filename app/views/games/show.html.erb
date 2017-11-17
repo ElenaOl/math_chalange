@@ -12,24 +12,27 @@
                 <h2> <%= @game[:problem] %> </h2>
             
                 <% url = "/games/#{@game[:id]}" %>
-
+                    
                 <%= form_tag(url, method: "put", class: "game_form") do %>      
-                <h4>Your Result: </h4>
-                <%= text_field_tag(:result) %>    
-                <%= submit_tag("Submit")  %>
-                <% end %>
+                    <h4>Your Result: </h4>
+                    <%= text_field_tag(:result) %>    
+                    <%= submit_tag("Submit")  %>
+                    <% end %>     
             <% else %>
                   
                 <a class="waves-effect waves-light btn-large"<%= link_to "Start over", games_path(:child_id => @game[:child_id]) %></a>      
             <% end %>
         </div>
-        <div class="col s12">       
+        <div class="col s12 m4 l4">       
             <h4>Your score is:</h4> 
-        </div>
-        <div class="col s12">              
             <h2><%=@game[:right_count]%>/<%=@game[:total_count]%></h2>
-        </div>   
-    </div>  
+        </div>
+        <div class="col s12 ">  
+                <h4>Time passed since you started (hours:minutes:seconds)</h4> 
+                 <h2 id="time"></h2>   
+        </div>
+       
+    </div> 
 </div>
 
 <div class="container">
@@ -43,3 +46,22 @@
     </div>
 </div>        
 
+<script>
+    
+    function secondsToHms(d) {
+        d = Number(d);
+        var h = Math.floor(d / 3600);
+        var m = Math.floor(d % 3600 / 60);
+        var s = Math.floor(d % 3600 % 60);
+        return ('0' + h).slice(-2) + ":" + ('0' + m).slice(-2) + ":" + ('0' + s).slice(-2);
+    }
+
+    var sec = Math.floor( <%= Time.now - Time.parse(@game[:start_time])%>);
+    $("#time")[0].innerText = secondsToHms(sec);
+    <% if(@game[:total_count] <20) %>
+        setInterval(function(){ 
+            sec = sec + 1;
+            $("#time")[0].innerText = secondsToHms(sec);
+        }, 1000);
+    <% end %>
+</script>

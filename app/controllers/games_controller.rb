@@ -64,11 +64,12 @@ class GamesController < ApplicationController
         level = @game[:level]
         operation = @game[:operation]
         child_id = @game[:child_id]
-
+        start_time = Time.new
+        @game[:start_time] = start_time
+        puts "Current Time : !!!!!!!!!!!!!!!!!!!" + start_time.inspect
         puts "!!!!!!!!CREATINGGAME"
         @game = Game.create(game_params)
-        # @game[:start_time] = 
-
+        
         make_problem
         redirect_to controller: 'games', action: 'show', id:@game[:id]
     end
@@ -99,6 +100,9 @@ class GamesController < ApplicationController
             @game[:right_count] += 1
         end 
         @game[:total_count] += 1
+        if(@game[:total_count] == 20)
+            @game[:end_time] = Time.now
+        end    
         
         make_problem
         redirect_to controller: 'games', action: 'show', id:@game[:id]
