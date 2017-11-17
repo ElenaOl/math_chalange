@@ -1,13 +1,12 @@
 
 <div class="container">
-    <div class="row">
-        <div class="col s12">  
-			<h3> Children </h3>
-		</div>
-		<div class="col s12">  	
+	<div class="row">
+		<div class="col s12 m8"> 
+			<%= image_tag("children.png", :alt => "children img") %>
+		</div> 
+        <div class="col s12 m4">  
+			<h3> Children </h3> 	
 			<a class="waves-effect waves-light btn"<%= link_to "Register child", 'children/new', method: :get %></a>      
-		</div>
-		<div class="col s12">  
 			<% @children.each do |child| %>
 				<a href="<%= child_path(child)%>"><h4><%= child.name %></h4></a>
 			<% end %>
