@@ -15,7 +15,7 @@
 * Run `bundle install` to install dependencies
 * Use `rails` to start your application
 
-* View this project on <a href="https://.herokuapp.com/">Heroku</a>
+* View this project on <a href="https://secret-hollows-15422.herokuapp.com/">Heroku</a>
 
 # Approach taken: #
 
