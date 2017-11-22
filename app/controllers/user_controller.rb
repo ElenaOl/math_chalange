@@ -1,14 +1,7 @@
 class UserController < ApplicationController
-    # def index
-    #     @users = User.all
-    #   end
     
       def create
         user = User.create(user_params)
-        
-        puts '#############user.create'
-        puts user
-        # redirect_to :controller=>'sessions', :action=>'create', :user=>user
         redirect_to login_path
       end
     
@@ -40,8 +33,6 @@ class UserController < ApplicationController
       end
     
       def show
-        puts "user_controller pointing to SHOW ROUTE"
-        # @user = User.find(params[:id])
         @user = @current_user
         @children = Child.where(:user_id => @current_user.id)
       end

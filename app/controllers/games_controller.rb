@@ -2,23 +2,14 @@ class GamesController < ApplicationController
     before_action :current_user, :is_authenticated
 
     def new
-
-        puts "!!!!!!NEWNEWNEWNEW"
-        puts params[:child_id]
-
         @child = Child.find(params[:child_id])
         @game = Game.new
     end
 
     def make_problem
-        puts "!!!!!!!!!!!!MAKEPROBLEM"
 
         level = @game[:level]
-        puts "!!!!!!!!!!!!!!!!!!!level"
-        puts level
         operation = @game[:operation]
-        puts "!!!!!!!!!!!!!!!!!!!operation"
-        puts operation
 
         if(level == 1) 
             num1 = rand(0..10) 
@@ -53,21 +44,12 @@ class GamesController < ApplicationController
 
 
     def create
-        puts "!!!!!!createcreatecreate"
-        puts params[:game]
-
-
-
         @game = params[:game]
-        puts "params[:game]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" 
-        puts @game
         level = @game[:level]
         operation = @game[:operation]
         child_id = @game[:child_id]
         start_time = Time.new
         @game[:start_time] = start_time
-        puts "Current Time : !!!!!!!!!!!!!!!!!!!" + start_time.inspect
-        puts "!!!!!!!!CREATINGGAME"
         @game = Game.create(game_params)
         
         make_problem
@@ -76,25 +58,16 @@ class GamesController < ApplicationController
 
     
     def show
-        puts '!!!!!showshowshow'
         @game = Game.find(params[:id])
     end
 
     def update
-        puts "!!!!!!!!!!!!updateupdateupdateupdateupdateupdateupdatevvvvvvvvvvvvvvvv"
         game_id = params[:id]
-        puts game_id
-
         @game = Game.find(game_id)
-
         # read user result
         result = params[:result].to_i
-        puts "!!!!!!!!!!!!resultresultvvresultresultresultresult"
-        puts result
              
         expected_answer = @game[:expected_answer]
-        puts "expected answer"
-        puts expected_answer 
 
         if(result == expected_answer)
             @game[:right_count] += 1
